@@ -1,0 +1,31 @@
+{
+  "name": "require",
+  "version": "0.1.0",
+  "description": "A CommonJS module loader for the web.",
+  "main": "require-loader.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meowtec/require.git"
+  },
+  "keywords": [
+    "require",
+    "commonJS",
+    "loader"
+  ],
+  "author": "Berton Zhu <bertonzh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meowtec/require/issues"
+  },
+  "homepage": "https://github.com/meowtec/require#readme",
+  "devDependencies": {
+    "node-static": "^0.7.7"
+  }
+}
