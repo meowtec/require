@@ -2,7 +2,7 @@
 A CommonJS module loader for the web.
 
 ## example
-step 1: install devDependencies
+step 1: install dependencies
 ```
 npm install
 npm run server
