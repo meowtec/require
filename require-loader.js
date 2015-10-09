@@ -121,7 +121,7 @@
 
     // 命中缓存
     if (mod && mod.status) {
-      callback(mod)
+      callback(null, mod)
     } else {
       // 缓存中不存在
       if (!mod) {
@@ -136,7 +136,7 @@
           if (err) {
             mod.status = -1
             mod.callbacks.forEach(function(cb) {
-              cb(mod)
+              cb(1, mod)
             })
           }
           else {
@@ -153,16 +153,14 @@
             }, function() {
               mod.status = 1
               mod.callbacks.forEach(function(cb) {
-                cb(mod)
+                cb(null, mod)
               })
             })
           }
         })
       }
 
-      mod.callbacks.push(function() {
-        callback(mod)
-      })
+      mod.callbacks.push(callback)
     }
   }
 
@@ -190,8 +188,8 @@
   }
 
   function loadPackage(intro) {
-    prepareModule(intro, function(mod) {
-      setupModule(mod)
+    prepareModule(intro, function(err, mod) {
+      err || setupModule(mod)
     })
   }
 
