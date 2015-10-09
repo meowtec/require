@@ -202,5 +202,5 @@
     })
   })
 
-  win.commonLoad = loadPackage
+  win.requireLoad = loadPackage
 })(this)
