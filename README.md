@@ -7,6 +7,5 @@ step 1: install devDependencies
 npm install
 npm run server
 ```
-
-step 2: open example
+step 2: open example at:  
 http://127.0.0.1:8080/example/
