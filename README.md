@@ -1,13 +1,14 @@
 # require
 A CommonJS module loader for the web.
 
-## Example
-step 1: install dependencies
+## example
+Step 1: install dependencies
 ```
 npm install
-npm run server
+npm start
 ```
-step 2: open example at:
+
+Step 2: open example at:
 http://127.0.0.1:8080/example/
 
 ## Usage

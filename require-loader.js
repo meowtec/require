@@ -194,8 +194,8 @@
   }
 
   document.addEventListener("DOMContentLoaded", function(event) {
-    _.each(document.querySelectorAll('script[src-intro]'), function(item) {
-      var intro = item.getAttribute('src-intro')
+    _.each(document.querySelectorAll('script[src-entry]'), function(item) {
+      var intro = item.getAttribute('src-entry')
       loadPackage(intro)
     })
   })
