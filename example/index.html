@@ -3,9 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      background: #333039;
+      color: #ccc;
+    }
+
+    #console {
+      width: 60em;
+      margin: 20px auto;
+      font-size: 12px;
+      font-family: monaco, consolas, monospace;
+    }
+
+    #console p {
+      margin: 0.5em 0;
+      padding-left: 100px;
+    }
+
+    #console p span {
+      margin-right: 1em;
+    }
+
+    #console .date {
+      font-size: 10px;
+      float: left;
+      margin-left: -100px;
+      margin-right: 0;
+    }
+
+    #console .null, #console .undefined {
+      color: #999;
+    }
+
+    #console .true {
+      color: #0fc;
+    }
+
+    #console .false {
+      color: #f39;
+    }
+
+    #console .number {
+      color: #fff;
+    }
+
+    #console .string {
+      color: #fc9;
+    }
+
+    #console .string:before,
+    #console .string:after {
+      content: "\'";
+      opacity: 0.6;
+    }
+
+    #console .object {
+      color: #09f;
+    }
+  </style>
   <script src="../require-loader.js"></script>
 </head>
 <body>
+  <div id="console"></div>
+  <script>
+  // debug tools
+  (function() {
+    var console
+
+    var span = function(content, className) {
+      return '<span class="' + className + '">' + content + '</span>'
+    }
+
+    var now = function() {
+      var date = new Date()
+      var milliseconds = String(date.getMilliseconds())
+      return date.toTimeString().split(' ')[0] + ':' + '000'.slice(milliseconds.length) + milliseconds
+    }
+
+    var logHTML = function(args) {
+      args = [].slice.call(args)
+
+      return span(now(), 'date') + args.map(function(arg) {
+        var type
+        var content = arg
+
+        if (arg === true || arg === false || arg == null) {
+          type = String(arg)
+        }
+        else {
+          type = typeof arg
+          if (type === 'object') {
+            try {
+              content = JSON.stringify(arg)
+            }
+            catch(e) {
+              content = [].toString.call(arg)
+            }
+          }
+        }
+
+        return span(content, type)
+      }).join('')
+    }
+
+    window.log = function(text) {
+      if (!console) {
+        console = document.getElementById('console')
+      }
+      var p = document.createElement('p')
+      p.innerHTML = logHTML(arguments)
+      console.appendChild(p)
+    }
+  })()
+  </script>
   <script src-entry="./assets/main"></script>
 </body>
 </html>
