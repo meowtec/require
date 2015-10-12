@@ -11,6 +11,8 @@ npm start
 Step 2: open example at:
 http://127.0.0.1:8080/example/
 
+[online demo](http://meowtec.github.io/demo/require/example/)
+
 ## Usage
 ```
 <script src-entry="./path/to/main/file"></script>
